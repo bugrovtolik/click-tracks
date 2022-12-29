@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.7.0"
     kotlin("plugin.spring") version "1.7.0"
     kotlin("plugin.serialization") version "1.7.0"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "com.abuhrov"

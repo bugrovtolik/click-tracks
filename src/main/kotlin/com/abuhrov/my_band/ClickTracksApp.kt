@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class MyBandApplication
+class ClickTracksApp
 
 fun main(args: Array<String>) {
-    runApplication<MyBandApplication>(*args)
+    runApplication<ClickTracksApp>(*args)
 }

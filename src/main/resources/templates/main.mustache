@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <style>
+        .box {
+            box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
+            text-align: center;
+            padding: 10px;
+            margin: 10px 100px 0;
+        }
+        .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: rgba(17, 12, 46, 0.15) 0 0 150px 0;
+            background-color: #F7F6F8;
+            padding: 20px 20px 10px;
+        }
+    </style>
+    <title>MyBand</title>
+</head>
+<body>
+    <div class="center">
+        <label for="roomId">
+            Enter room id:
+        </label>
+        <input id="roomId"/>
+
+        <button id="connect">Connect</button>
+        <button id="disconnect">Disconnect</button>
+
+        <hr/>
+        <div class="box">
+            <h3 id="info">Disconnected</h3>
+        </div>
+
+        <div id="room" hidden>
+            <hr/>
+            <form onsubmit="return false">
+                <label for="bpm">Beats per minute:</label>
+                <input id="bpm" type="number" min="1" max="200" value="120">
+                <hr/>
+                <button id="play">Play</button>
+                <button id="stop">Stop</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/peer.js"></script>
+</body>
+</html>

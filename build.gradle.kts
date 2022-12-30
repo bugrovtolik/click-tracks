@@ -23,12 +23,12 @@ dependencies {
 }
 
 application {
-    mainClass.set("com.abuhrov.clicktracks.ClickTracksAppKt")
+    mainClassName = "com.abuhrov.clicktracks.ClickTracksAppKt"
 }
 
 tasks {
     withType<Jar> {
-        manifest { attributes(mapOf("Main-Class" to "com.abuhrov.clicktracks.ClickTracksAppKt")) }
+        manifest { attributes(mapOf("Main-Class" to application.mainClassName)) }
     }
     register("stage") {
         dependsOn("build")

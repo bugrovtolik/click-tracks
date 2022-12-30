@@ -1,4 +1,4 @@
-package com.abuhrov.my_band.controller
+package com.abuhrov.clicktracks.controller
 
 import org.springframework.context.annotation.Bean
 import org.springframework.web.bind.annotation.*

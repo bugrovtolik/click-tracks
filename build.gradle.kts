@@ -1,16 +1,12 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
+    application
     kotlin("jvm") version "1.7.0"
     kotlin("plugin.spring") version "1.7.0"
     kotlin("plugin.serialization") version "1.7.0"
-    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "com.abuhrov"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_13
-java.targetCompatibility = JavaVersion.VERSION_13
 
 repositories {
     mavenCentral()
@@ -22,14 +18,26 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-mustache:2.5.6")
     implementation("org.springframework.boot:spring-boot-starter-webflux:2.6.1")
     implementation("org.springframework.boot:spring-boot-starter-rsocket:2.5.6")
+    implementation("com.google.cloud.tools:appengine-gradle-plugin:2.4.5")
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "13"
+application {
+    mainClass.set("com.abuhrov.clicktracks.ClickTracksAppKt")
+}
+
+tasks {
+    withType<Jar> {
+        manifest {
+            attributes["Main-Class"] = "com.abuhrov.clicktracks.ClickTracksAppKt"
+        }
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        from(sourceSets.main.get().output)
+        dependsOn(configurations.runtimeClasspath)
+        from({
+            configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+        })
     }
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
+    register("stage") {
+        dependsOn("build")
+    }
 }

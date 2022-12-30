@@ -1,4 +1,4 @@
-package com.abuhrov.my_band.domain.model
+package com.abuhrov.clicktracks.domain.model
 
 import kotlinx.serialization.Serializable
 

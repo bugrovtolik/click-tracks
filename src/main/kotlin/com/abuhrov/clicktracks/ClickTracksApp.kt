@@ -1,4 +1,4 @@
-package com.abuhrov.my_band
+package com.abuhrov.clicktracks
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

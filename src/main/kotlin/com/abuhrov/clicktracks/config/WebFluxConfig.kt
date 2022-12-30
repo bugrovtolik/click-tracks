@@ -1,4 +1,4 @@
-package com.abuhrov.my_band.config
+package com.abuhrov.clicktracks.config
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

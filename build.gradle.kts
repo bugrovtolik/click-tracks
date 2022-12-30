@@ -3,6 +3,7 @@ plugins {
     kotlin("jvm") version "1.7.0"
     kotlin("plugin.spring") version "1.7.0"
     kotlin("plugin.serialization") version "1.7.0"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "com.abuhrov"
@@ -27,15 +28,7 @@ application {
 
 tasks {
     withType<Jar> {
-        manifest {
-            attributes["Main-Class"] = "com.abuhrov.clicktracks.ClickTracksAppKt"
-        }
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-        from(sourceSets.main.get().output)
-        dependsOn(configurations.runtimeClasspath)
-        from({
-            configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
-        })
+        manifest { attributes(mapOf("Main-Class" to "com.abuhrov.clicktracks.ClickTracksAppKt")) }
     }
     register("stage") {
         dependsOn("build")
